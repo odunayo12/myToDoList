@@ -15,8 +15,9 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-// Database
 
+
+// Database
 mongoose.connect('mongodb+srv://admin-odun:test123@cluster0-chv5a.mongodb.net/todolistDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -219,12 +220,17 @@ app.post('/delete', (req, res) => {
 
 
 
-app.get("/about", function(req, res) {
-  res.render("about");
-});
+// app.get("/about", function(req, res) {
+//   res.render("about");
+// });
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port);
+app.listen(port, function() {
+  console.log("Server started sucessfully");
 });
 
 // admin_UP
