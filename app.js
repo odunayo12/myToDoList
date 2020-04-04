@@ -113,9 +113,10 @@ app.get("/", function(req, res) {
       Item.insertMany(defaultItems, (err) => {
         if (err) {
           console.log(err);
-        } else {
-          console.log('Success!');
         }
+        // else {
+        //   console.log('Success!');
+        // }
       });
       // this renders the item added if empty
       res.redirect('/');
@@ -204,7 +205,7 @@ app.post('/delete', (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        console.log(itemToDelete + " deleted");
+        // console.log(itemToDelete + " deleted");
         res.redirect('/');
       }
     });
