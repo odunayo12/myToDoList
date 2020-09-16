@@ -1,29 +1,32 @@
 <%- include("header") -%>
+<div class="container-fluid">
+  <div class="box" id="heading">
+    <h1> <%= listTitle %> </h1>
+  </div>
 
-<div class="box" id="heading">
-  <h1> <%= listTitle %> </h1>
-</div>
 
-<div class="box container-fluid">
-  <%# for deleting item %>
-  <% newListItems.forEach((content) => {%>
-  <form class="" action="/delete" method="post">
-    <div class="item">
-      <!-- so that the form can delete when checked we "onChange="this.form.submit()"" and use <%=  content._id  %> to retrieve the id of each checked element-->
-      <input type="checkbox" name="checkToDelete" value="<%=  content._id  %>" onChange="this.form.submit()"></input>
-      <p><%=  content.name  %></p>
-    </div>
-    <!-- we use a hidden input to provide a ghost field that does not appear on the client side but can take values which we can use in the back-end -->
-    <input type="hidden" name="hiddenListName" value="<%= listTitle %>"></input>
-  </form>
-  <% }) %>
+  <div class="box">
+    <%# for deleting item %>
+    <% newListItems.forEach((content) => {%>
+    <form class="" action="/delete" method="post">
+      <div class="item">
+        <!-- so that the form can delete when checked we "onChange="this.form.submit()"" and use <%=  content._id  %> to retrieve the id of each checked element-->
+        <input type="checkbox" name="checkToDelete" value="<%=  content._id  %>" onChange="this.form.submit()"></input>
+        <p><%=  content.name  %></p>
+      </div>
+      <!-- we use a hidden input to provide a ghost field that does not appear on the client side but can take values which we can use in the back-end -->
+      <input type="hidden" name="hiddenListName" value="<%= listTitle %>"></input>
+    </form>
+    <% }) %>
 
-<!-- for adding item -->
-  <form class="item" action="/" method="post">
-    <input type="text" name="newItem" placeholder="New Item" autocomplete="off"></input>
-    <!-- value is what we get when we request form the button when a post request us made -->
-    <button type="submit" name="list" value="<%= listTitle %>">+</button>
-  </form>
+  <!-- for adding item -->
+    <form class="item" action="/" method="post">
+      <input type="text" name="newItem" placeholder="New Item" autocomplete="off"></input>
+      <!-- value is what we get when we request form the button when a post request us made -->
+      <button type="submit" name="list" value="<%= listTitle %>"><i class="fas fa-plus"></i></button>
+    </form>
+  </div>
+
 </div>
 
 <%- include("footer") -%>
